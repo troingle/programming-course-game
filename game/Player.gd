@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 400.0
+const SPEED = 450.0
 const JUMP_VELOCITY = -600.0
 
 @onready var anim = get_node("AnimatedSprite2D")
@@ -14,11 +14,15 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if Input.is_action_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		anim.play("Jump")
 		
-	var direction = Input.get_axis("ui_left", "ui_right")
+	if Input.is_action_pressed("reset"):
+		position.x = 0
+		position.y = 0
+		
+	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
 		anim.play("Run")

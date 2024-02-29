@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c1svkfd65e7q6" path="res://animations/run4.png" id="6_wexho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iiej1"]
-size = Vector2(20, 36)
+size = Vector2(14.9932, 30.1994)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u6a5h"]
 animations = [{
@@ -52,9 +52,13 @@ scale = Vector2(-2.201, 1.755)
 script = ExtResource("1_03m84")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.681508, 0.854701)
 shape = SubResource("RectangleShape2D_iiej1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u6a5h")
 animation = &"Run"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
