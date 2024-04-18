@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh8yip7a3ymut"]
+
+[ext_resource type="Script" path="res://checkpoint.gd" id="1_mifi4"]
+[ext_resource type="Texture2D" uid="uid://cnnxfcl328nja" path="res://animations/new_checkpoint.png" id="2_i2lsn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0as0"]
+atlas = ExtResource("2_i2lsn")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i32cm"]
+atlas = ExtResource("2_i2lsn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxjra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0as0")
+}],
+"loop": false,
+"name": &"activated",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i32cm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_mifi4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uxjra")
+autoplay = "default"

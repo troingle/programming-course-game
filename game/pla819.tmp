@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://xnr0gnei07fl"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_03m84"]
+[ext_resource type="Texture2D" uid="uid://c0ktu5xqd1ofj" path="res://animations/idle.png" id="2_nhrln"]
+[ext_resource type="Texture2D" uid="uid://3l8iflkxw7c" path="res://animations/run1.png" id="3_cenue"]
+[ext_resource type="Texture2D" uid="uid://crd7ivgb3qjpp" path="res://animations/jump.png" id="3_i5dxc"]
+[ext_resource type="Texture2D" uid="uid://d31yi1pjkrauo" path="res://animations/run2.png" id="4_22wc7"]
+[ext_resource type="Texture2D" uid="uid://cqb87s6l7n7c0" path="res://animations/run3.png" id="5_aa03r"]
+[ext_resource type="Texture2D" uid="uid://c1svkfd65e7q6" path="res://animations/run4.png" id="6_wexho"]
+[ext_resource type="Texture2D" uid="uid://glqunrdl8b6m" path="res://icon.svg" id="8_5ausj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iiej1"]
+size = Vector2(14.9932, 30.1994)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u6a5h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nhrln")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i5dxc")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cenue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_22wc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aa03r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wexho")
+}],
+"loop": false,
+"name": &"Run",
+"speed": 8.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(-2.201, 1.755)
+script = ExtResource("1_03m84")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.681508, 0.854701)
+shape = SubResource("RectangleShape2D_iiej1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_u6a5h")
+animation = &"Run"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="Head" type="Node2D" parent="."]
+position = Vector2(0, -7.40741)
+
+[node name="Sprite2D" type="Sprite2D" parent="Head"]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.148988, 0.0459033)
+texture = ExtResource("8_5ausj")
