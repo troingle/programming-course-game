@@ -61,7 +61,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Charge",
-"speed": 6.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -167,11 +167,8 @@ texture_filter = 1
 scale = Vector2(-2.201, 1.755)
 script = ExtResource("1_03m84")
 
-[node name="Spear" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Spear"]
-position = Vector2(-0.454339, -25.0712)
-rotation = -1.5708
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.23, 1)
 texture = ExtResource("3_nyu2d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

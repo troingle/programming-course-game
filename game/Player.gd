@@ -14,8 +14,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var win = $"../Win"
 @onready var coin = $"../Coin"
 
+@onready var spear = $Spear
+@onready var spearSprite = $Spear/Sprite2D
+
 var x = 0
 var direction = 0
+
 var canWJ = true
 var WJtimer = 0
 var currentX = 0
@@ -33,11 +37,15 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	else:
+		velocity.x = 0
 	
 	if is_on_floor() and Input.is_action_pressed("jump"):
 		charging = true
 		
 	elif is_on_wall():
+		position.x += 1
+		print("WALL WALL WALL WALALLLLALLAL")
 		anim.play("Walled")
 		if Input.is_action_pressed("jump"):
 			direction *= -1
@@ -46,28 +54,22 @@ func _physics_process(delta):
 			
 	elif is_on_floor():
 		anim.play("Idle")
-		
+	
+	if Input.is_action_pressed("left") and x < 90:
+		x += 3
+	if Input.is_action_pressed("right") and x > -90:
+		x -= 3
+	
 	if charging:
 		if charge == 0:
 			anim.play("Charge")
-		charge += 1
-		print(chargeX)
-		if !Input.is_action_pressed("jump") or charge >= 70:
-			velocity.y += charge * JUMP_VELOCITY
-			velocity.x += chargeX * direction * FLY_SPEED
+		charge += 2
+		if !Input.is_action_pressed("jump") or charge >= 65:
+			velocity = Vector2(0.0, charge * -15).rotated(deg_to_rad(-x))
 			charging = false
 			charge = 0
-			chargeX = 0
-			
-		if Input.is_action_pressed("left"):
-			if chargeX > 0:
-				chargeX = 0
-			chargeX -= 100
-		if Input.is_action_pressed("right"):
-			if chargeX < 0:
-				chargeX = 0
-			chargeX += 100
-			
+		
+	spear.rotation = deg_to_rad(x)
 		
 	if !is_on_floor() and !is_on_wall():
 		anim.play("Jump")
@@ -80,25 +82,15 @@ func _physics_process(delta):
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()
 		
-	if is_on_floor():
-		direction = Input.get_axis("left", "right")
-		speed = NORMAL_SPEED
-	else:
-		speed = FLY_SPEED
-	
-	if direction and not charging and is_on_floor():
-		velocity.x = direction * speed
-	elif is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, speed)
-		
-	if direction > 0:
-		anim.flip_h = true
-	elif direction < 0:
-		anim.flip_h = false
-		
 	if roundf(position.x * 10) != roundf(currentX * 10):
 		canWJ = true
 		WJtimer = 0
+		
+		if currentX > position.x:
+			anim.flip_h = false
+		else:
+			anim.flip_h = true
+		
 		currentX = position.x
 		
 	if not canWJ:
