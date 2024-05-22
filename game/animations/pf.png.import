@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnrwp425m5xa0"
-path="res://.godot/imported/walled.png-dd301f57d9fbb3aae33fa2831e454faa.ctex"
+uid="uid://c8l6yx1511bny"
+path="res://.godot/imported/pf.png-4e483411c0e04946a5f1c07e045728ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://animations/walled.png"
-dest_files=["res://.godot/imported/walled.png-dd301f57d9fbb3aae33fa2831e454faa.ctex"]
+source_file="res://animations/pf.png"
+dest_files=["res://.godot/imported/pf.png-4e483411c0e04946a5f1c07e045728ac.ctex"]
 
 [params]
 

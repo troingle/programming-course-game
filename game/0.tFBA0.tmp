@@ -230,13 +230,13 @@ position = Vector2(3136, 660)
 scale = Vector2(1.5, 1.5)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -244.0
-offset_top = 479.0
-offset_right = 249.0
-offset_bottom = 564.0
+offset_left = -268.0
+offset_top = 477.0
+offset_right = 384.0
+offset_bottom = 562.0
 theme_override_fonts/font = ExtResource("6_li0km")
 theme_override_font_sizes/font_size = 40
-text = "leap lord"
+text = "jump."
 horizontal_alignment = 1
 
 [node name="Win" type="Node2D" parent="."]

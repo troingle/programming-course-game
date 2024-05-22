@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2dpjravgo1pv"]
+
+[ext_resource type="Script" path="res://platform.gd" id="1_e1jhp"]
+[ext_resource type="Texture2D" uid="uid://c8l6yx1511bny" path="res://animations/pf.png" id="1_lke35"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fx2wq"]
+size = Vector2(192, 12)
+
+[node name="Platform" type="StaticBody2D"]
+script = ExtResource("1_e1jhp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(12.03, 3)
+texture = ExtResource("1_lke35")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fx2wq")
+disabled = true
+debug_color = Color(0.184314, 0.513726, 1, 0.419608)

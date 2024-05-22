@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lqsqmor4r12s"
-path="res://.godot/imported/checkpoint_anim.png-d4ddc66a2c9216cb4a5bd9c834879c34.ctex"
+uid="uid://bwqss4e1nrvwe"
+path="res://.godot/imported/good_tileset.png-58217b77b827e94e5c9e7d4fe1c77610.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://animations/checkpoint_anim.png"
-dest_files=["res://.godot/imported/checkpoint_anim.png-d4ddc66a2c9216cb4a5bd9c834879c34.ctex"]
+source_file="res://animations/good_tileset.png"
+dest_files=["res://.godot/imported/good_tileset.png-58217b77b827e94e5c9e7d4fe1c77610.ctex"]
 
 [params]
 
