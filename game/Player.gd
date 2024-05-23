@@ -33,13 +33,23 @@ var onIce = false
 
 var currentPalette = 0
 
+var floating = false
+
 func _ready():
 	Global.currentLvl = get_tree().current_scene.name.to_int()
 	anim.flip_h = true
 
 func _physics_process(delta):
-	# MOVEMENT
-	if is_on_wall() and not is_on_floor() and velocity.y > 0:
+	if floating:
+		velocity.y = 0
+		velocity.y -= 400
+		if velocity.x < 80:
+			if velocity.x > 0:
+				velocity.x = 80
+			else:
+				velocity.x = -80
+		
+	elif is_on_wall() and not is_on_floor() and velocity.y > 0:
 		velocity.y += gravity / 2.5 * delta
 	elif not is_on_floor():
 		velocity.y += gravity * delta
@@ -123,6 +133,7 @@ func _physics_process(delta):
 	
 	tilemap.set_layer_modulate(0, Global.palettes[currentPalette][1])
 	$"../GrassMap".set_layer_modulate(0, Global.palettes[currentPalette][1])
+	$"../FloatMap".set_layer_modulate(0, Global.palettes[currentPalette][1])
 	modulate = Global.palettes[currentPalette][1]
 	$"../Labels/Label".add_theme_color_override("font_color", Global.palettes[currentPalette][1])
 	
@@ -130,11 +141,14 @@ func _physics_process(delta):
 		currentPalette = -1
 	if Global.epilepsyMode:
 		currentPalette += 1
-	
-	#if position.distance_to(coin.position) <= 50 and coin.visible == true:
-		#coin.visible = false
-		#play coin get sound
-		#if get_tree().current_scene.name not in Global.coinedLevels:
-			#Global.coinedLevels.append(get_tree().current_scene.name)
-			#print(Global.coinedLevels)
-	
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == "FloatMap":
+		floating = true
+		print("Hgt")
+
+
+func _on_area_2d_body_exited(body):
+	if body.name == "FloatMap":
+		floating = false

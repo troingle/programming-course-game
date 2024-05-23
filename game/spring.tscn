@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1qrt7aext8s2"]
+
+[ext_resource type="Script" path="res://spring.gd" id="1_d1tp8"]
+[ext_resource type="Texture2D" uid="uid://ynslu4rklprt" path="res://animations/spring.png" id="2_q0kuk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vvwd"]
+size = Vector2(48, 15)
+
+[node name="Spring" type="StaticBody2D" groups=["Springs"]]
+position = Vector2(216, -7848)
+script = ExtResource("1_d1tp8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_q0kuk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_7vvwd")
